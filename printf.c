@@ -9,6 +9,24 @@ int print_char(va_list list)
 charput(va_arg(list, int));
 return (1);
 }
+
+/**
+* print_string - Prints a string
+* @list: list of arguments
+* Return: Will return the amount of characters printed.
+*/
+int print_string(va_list list)
+{
+int i;
+char *str;
+
+str = va_arg(list, char *);
+if (str == NULL)
+str = "(null)";
+for (i = 0; str[i] != '\0'; i++)
+charput(str[i]);
+return (i);
+}
 /**
 * print_percent - Prints a percent symbol
 * @list: list of arguments
@@ -30,34 +48,6 @@ int num_length;
 
 num_length = print_number(list);
 return (num_length);
-}
-/**
-* print_string - Prints a string
-* @list: list of arguments
-* Return: Will return the amount of characters printed.
-*/
-int print_string(va_list list)
-{
-int i;
-char *str;
-
-str = va_arg(list, char *);
-if (str == NULL)
-str = "(null)";
-for (i = 0; str[i] != '\0'; i++)
-charput(str[i]);
-return (i);
-}
-
-/**
-* print_percent - Prints a percent symbol
-* @list: list of arguments
-* Return: Will return the amount of characters printed.
-*/
-int print_percent(__attribute__((unused))va_list list)
-{
-charput('%');
-return (1);
 }
 /**
  * _printf - Receives the main string and all the necessary parameters to
